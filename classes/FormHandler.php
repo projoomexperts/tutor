@@ -10,10 +10,8 @@
 
 namespace TUTOR;
 
-
 if ( ! defined( 'ABSPATH' ) )
 	exit;
-
 
 class FormHandler {
 
@@ -29,10 +27,8 @@ class FormHandler {
 	public function process_login(){
 		tutils()->checking_nonce();
 
-
 		$username = tutils()->array_get('log', $_POST);
 		$password = tutils()->array_get('pwd', $_POST);
-
 
 		try {
 			$creds = array(
@@ -40,7 +36,6 @@ class FormHandler {
 				'user_password' => $password, // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 				'remember'      => isset( $_POST['rememberme'] ), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			);
-
 
 			$validation_error = new \WP_Error();
 			$validation_error = apply_filters( 'tutor_process_login_errors', $validation_error, $creds['user_login'], $creds['user_password'] );
@@ -76,20 +71,10 @@ class FormHandler {
 			tutor_flash_set('warning', apply_filters( 'login_errors', $e->getMessage()) );
 			do_action( 'tutor_login_failed' );
 		}
-
-
-
 	}
-
-
-
-
 
 	public function tutor_retrieve_password(){
 		tutils()->checking_nonce();
-
-		//echo '<pre>';
-		//die(print_r($_POST));
 
 		$login = sanitize_user( tutils()->array_get('user_login', $_POST));
 
@@ -147,7 +132,6 @@ class FormHandler {
 		do_action( 'tutor_reset_password_notification', $user_login, $key );
 	}
 
-
 	public function reset_password_notification( $user_login = '', $reset_key = ''){
 		$this->sendNotification($user_login, $reset_key);
 
@@ -176,7 +160,6 @@ class FormHandler {
 			tutor_flash_set('danger', __( 'This key is invalid or has already been used. Please reset your password again if needed.', 'tutor') );
 			return false;
 		}
-
 
 		if ( $user instanceof \WP_User ) {
 			if ( !$password ) {
