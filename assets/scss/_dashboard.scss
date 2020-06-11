@@ -382,33 +382,26 @@
 }
 
 @media (max-width: 768px) {
-	.tutor-dashboard-content .tutor-quiz-attempt-history table tr {
-		display: flex;
-		flex-wrap: wrap;
-		box-sizing: border-box;
+	.tutor-dashboard-content .tutor-quiz-attempt-history table td {
+		.course-meta span {
+			display: block;
+			margin: 0 !important;
+		}
 	}
-	.tutor-dashboard-content .tutor-quiz-attempt-history table tr th {
-		display: none;
+	.tutor-quiz-attempt-review-wrap:nth-child(2) table {
+		th:nth-child(6),
+		th:nth-child(7),
+		td:nth-child(6),
+		td:nth-child(7) {
+			display: none;
+		}
 	}
-	.tutor-dashboard-content .tutor-quiz-attempt-history table tr td {
-		width: 100%;
+	.tutor-quiz-attempt-review-wrap {
+		background: #fff;
+		margin: 20px 0;
 	}
-	.tutor-dashboard-content
-		.tutor-quiz-attempt-history
-		table
-		tr
-		td:not(:first-child) {
-		text-align: right;
-	}
-
-	.tutor-dashboard-content
-		.tutor-quiz-attempt-history
-		table
-		tr
-		td:not(:first-child)::before {
-		content: attr(title) ": ";
-		float: left;
-		font-weight: 700;
+	.tutor-quiz-attempt-review-wrap .attempt-answers-header {
+		margin-top: 0px !important;
 	}
 }
 
